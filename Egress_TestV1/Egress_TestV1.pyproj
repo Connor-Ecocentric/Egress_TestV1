@@ -22,6 +22,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Egress_TestV1.py" />
+    <Compile Include="SSH_Comms.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SSH_Key\" />
+    <Folder Include="__pycache__\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="egress_testing.sh" />
+    <Content Include="SSH_Key\numen_collector_ssh" />
+    <Content Include="__pycache__\SSH_Comms.cpython-37.pyc" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
