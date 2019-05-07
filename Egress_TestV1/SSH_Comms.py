@@ -13,7 +13,7 @@ import re
 import operator as op
 import time
 from time import gmtime, strftime
-import scpclient
+from scp import SCPClient
 
 """
 User Defined Variables
@@ -78,23 +78,43 @@ class SSH():
             return()
 
     #%% SCP communications to send appropriate files to collector
-    def sendSCP(self, filepath):
+    def sendSCP(self, local, remote):
         complete = 0
     
         try:
-            scp = scpclient(ssh.get_transport(), progress = progress)
-            scp.put(("%s%s") % (filepath), '/')
+            scp = SCPClient(ssh.get_transport()) #progress = progress)
+            scp.put(files = local, remote_path = remote)
             print("---------------------------------------------------\n")
             print("File Transfered Successfully")
             print("---------------------------------------------------\n")
             complete = 1
         except:
-            print("SCP didnt work")
+            print("SCP didnt work") 
+            print(filepath)
             
-        complete = 1
+            complete = 1
     
         return(complete)
-        #%% Send Commands
+
+        #%% SCP communications to get appropriate files from collector
+    def getSCP(self, filepath):
+        complete = 0
+    
+        try:
+            scp = SCPClient(ssh.get_transport()) #progress = progress)
+            scp.get(remote_path = "/home/root/egress.txt", local_path = "C:\\Users\\conno\\source\\repos\\Connor-Ecocentric\\Egress_TestV1\\Egress_TestV1\\Response\\")
+            print("---------------------------------------------------\n")
+            print("File Transfered Successfully")
+            print("---------------------------------------------------\n")
+            complete = 1
+        except:
+            print("SCP didnt work") 
+            print(filepath)
+            
+            complete = 1
+    
+        return(complete)
+      
 
 
 

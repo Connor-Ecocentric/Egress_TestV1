@@ -25,6 +25,7 @@
     <Compile Include="SSH_Comms.py" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="TestOutput\" />
     <Folder Include="SSH_Key\" />
     <Folder Include="__pycache__\" />
   </ItemGroup>
