@@ -20,8 +20,8 @@ class Collector():
         SSH_Comms.ssh.close()
         return;
     def GetData(self):
-        SSH_Comms.SSH.Connect(self.CollectorIp)
-        SSH_Comms.SSH().getSCP(self.RemoteFile, self.LocalPath)
+        SSH_Comms.SSH().Connect(self.CollectorIp)
+        SSH_Comms.SSH().getSCP(self.LocalPath, self.RemoteFile)
 
 
 print("Do you wish to send or recieve? (1/0)")        
@@ -29,7 +29,7 @@ TransferType = int(input())
 if TransferType == 1:
     print("Sending Files to Collector Now......")
     Collector().SendFile()
-elif TransferType == 0
+elif TransferType == 0:
     print("Recieving Files from Collector Now.....")
     Collector().GetData()
 

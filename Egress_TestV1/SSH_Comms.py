@@ -97,20 +97,19 @@ class SSH():
         return(complete)
 
         #%% SCP communications to get appropriate files from collector
-    def getSCP(self, filepath):
+    def getSCP(self, local, remote):
         complete = 0
     
         try:
             scp = SCPClient(ssh.get_transport()) #progress = progress)
-            scp.get(remote_path = "/home/root/egress.txt", local_path = "C:\\Users\\conno\\source\\repos\\Connor-Ecocentric\\Egress_TestV1\\Egress_TestV1\\Response\\")
+            scp.get(remote_path = remote, local_path = local)
             print("---------------------------------------------------\n")
             print("File Transfered Successfully")
             print("---------------------------------------------------\n")
             complete = 1
         except:
             print("SCP didnt work") 
-            print(filepath)
-            
+           
             complete = 1
     
         return(complete)

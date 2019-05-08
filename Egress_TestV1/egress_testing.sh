@@ -18,6 +18,10 @@ hdparm -t /dev/mmcblk0 | awk '{printf $11}' >>egress.txt
 echo "" >>egress.txt
 hdparm -t /dev/mmcblk1 | awk '{printf $11}' >>egress.txt
 echo "" >>egress.txt
-
-more /etc/hostname >>egress.txt
+#Run a BIT and return only the results that have failed
 numen9_bit | grep FAIL >>egress.txt
+#Confirm CPU temperature
+cat /sys/class/thermal/thermal_zone0/temp >>egress.txt
+# Confirm wifi strength and link quality
+iwconfig wlan0
+
