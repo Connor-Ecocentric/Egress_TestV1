@@ -1,0 +1,24 @@
+xssdfwef
+N9C350B021801049
+N9C350B021801049
+......B021801049
+b311h/45841d
+b302h/45826d
+a2f9e59b4f58f751f3dc2f6b376430e2762a46b4
+ext4 12.2G 129.2M
+1.141V, 1.409V, 243.598V
+19.41
+73.74
+Running Test WIFI            [31m✘ FAIL  [95m WIFI            testIdWiFi     [0m
+Running Test CT Detection    [31m✘ FAIL  [95m CT Detection    testIdCtDetection[0m
+54200
+wlan0     IEEE 802.11abgn  ESSID:"Numen Mesh"  
+          Mode:Managed  Frequency:5.18 GHz  Access Point: 6C:3B:6B:BB:6C:DF   
+          Bit Rate=39 Mb/s   
+          Retry short  long limit:9   RTS thr=2347 B   Fragment thr=2346 B   
+          Encryption key:off
+          Power Management:off
+          Link Quality=54/70  Signal level=-56 dBm  
+          Rx invalid nwid:0  Rx invalid crypt:0  Rx invalid frag:0
+          Tx excessive retries:3  Invalid misc:0   Missed beacon:0
+

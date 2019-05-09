@@ -82,7 +82,7 @@ class SSH():
         complete = 0
     
         try:
-            scp = SCPClient(ssh.get_transport()) #progress = progress)
+            scp = SCPClient(ssh.get_transport(), sanitize=lambda x: x) #progress = progress)
             scp.put(files = local, remote_path = remote)
             print("---------------------------------------------------\n")
             print("File Transfered Successfully")
@@ -101,7 +101,7 @@ class SSH():
         complete = 0
     
         try:
-            scp = SCPClient(ssh.get_transport()) #progress = progress)
+            scp = SCPClient(ssh.get_transport(), sanitize=lambda x: x) #progress = progress)
             scp.get(remote_path = remote, local_path = local)
             print("---------------------------------------------------\n")
             print("File Transfered Successfully")

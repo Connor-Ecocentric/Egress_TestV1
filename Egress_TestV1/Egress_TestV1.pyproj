@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>488b52b8-f265-4698-b565-06e7292193f0</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Egress_TestV1.py</StartupFile>
+    <StartupFile>ReadAllFiles.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,6 +22,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Egress_TestV1.py" />
+    <Compile Include="ReadAllFiles.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="SSH_Comms.py" />
   </ItemGroup>
   <ItemGroup>
