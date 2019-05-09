@@ -1,21 +1,25 @@
 import pandas as pd
+import openpyxl
 import numpy
 import os
 EgressResults = pd.DataFrame()
 data = []
+dfx = []
 class ReadFiles():
     def __init__(self):
         self.path = ('C:\\Users\\conno\\Source\\Repos\\Connor-Ecocentric\\Egress_TestV1\\Egress_TestV1\\TestOutput\\')
     def Read(self):
-        for file in os.path.listdir(self.path):
-            filename = os.path.join(path, file)
+        global EgressResults
+        for file in os.listdir(self.path):
+            filename = os.path.join(self.path, file)
             with open(filename, 'r') as file:
-                print(file)
-                data.append(file)
+                 data = pd.read_csv(file, delimiter = "\n")
+                 EgressResults = pd.concat([EgressResults, data], axis = 1, sort= False)
+                
 ReadFiles().Read()
 
-
-
+print(EgressResults)
+EgressResults.to_csv('C:\\Users\\conno\\Source\\Repos\\Connor-Ecocentric\\Egress_TestV1\\Egress_TestV1\\TestOutput\\Results.csv')
 
 
 #    testdf = pd.DataFrame(columns = ['command', 'output'])
