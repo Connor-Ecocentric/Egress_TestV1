@@ -1,16 +1,17 @@
 #!/bin/bash
 more /etc/hostname >>$HOSTNAME.txt
 more /media/sdcard/config.ini | grep client_id | awk '{print $3}' >>$HOSTNAME.txt
-more /home/root/config.bak | grep client_id | awk '{print $3}' >>$HOSTNAME.txt
+more /home/root/config.bak | grep client_id | awk '{print $3}' >>$HOSTNAME.txt; value=$(more /home/root/config.bak | wc -l); if [ $value -lt 1 ]; then  echo 'NaN'; fi>>$HOSTNAME.txt 
+# The above have an if statement that checks if the value is empty (file doesnt exist) and returns a NaN, else it just returns the exprected value
 eco-feature-extract -e | grep Serial | awk '{print $4}' >>$HOSTNAME.txt
 #All of the above should match the Serial number of the Collector.
 stat / | grep Device | awk '{print $2}' >>$HOSTNAME.txt
 stat /media/sdcard | grep Device | awk '{print $2}' >>$HOSTNAME.txt
 #The above should return b11h and b302h respectively
-sha1sum /eco-overlay.tar.gz | awk '{print $1}' >>$HOSTNAME.txt
-sha1sum /run/media/mmcblk1p2/eco-overlay.tar.gz | awk '{print$1}' >>$HOSTNAME.txt
+sha1sum /eco-overlay.tar.gz | awk '{print $1}' >>$HOSTNAME.txt; value=$(sha1sum /eco-overlay.tar.gz | wc -l); if [ $value -lt 1 ]; then  echo 'NaN'; fi>>$HOSTNAME.txt
+sha1sum /run/media/mmcblk1p2/eco-overlay.tar.gz | awk '{print$1}' >>$HOSTNAME.txt; value=$(sha1sum /eco-overlay.tar.gz | wc -l); if [ $value -lt 1 ]; then  echo 'NaN'; fi>>$HOSTNAME.txt
 #The above checks the collector version on both the A and B partition
-df -Th | grep mmcblk0 | grep /dev/mmcblk0p2 | awk '{print $2,$3,$4}' >>$HOSTNAME.txt
+df -Th | grep mmcblk0 | grep /dev/mmcblk0p2 | awk '{print $2,$3,$6}' >>$HOSTNAME.txt
 #Check that sd card has been exteneded. column1 is type (ext4) 2 is size (12gb) and 3 is used space (should be low)
 tail -30 /media/sdcard/eco-feature-extract.log | grep RMS | awk '{print $39,$41,$43}' >>$HOSTNAME.txt
 #Check the voltage readings across all 3 phases (this will confirm hw mods are ok and voltage calibration is correct)

@@ -8,7 +8,7 @@ class Collector():
     def __init__(self):
         self.CollectorIp = Host #('215.16.144.81')
         #self.CollectorIp = ('10.0.0.96')
-        self.LocalPath = ("%s%s") % (cwd, '\\TestOutput\\')
+        self.LocalPath = ("%s%s") % (cwd, '\\TestOutputV2\\')
         self.LocalFile = ("%s%s") % (cwd,'\\egress_testing.sh')
         self.RemotePath = '/home/root'
         self.RemoteFile = '/home/root/N9C350B021801*'
@@ -30,9 +30,9 @@ class Collector():
         SSH_Comms.SSH().SendCommand("sync; shutdown -P -t now")
 
 
+HostNames = ['10.0.0.96']
 
-
-HostNames = [
+HostNamess = [
         '215.16.144.68',
         '215.16.144.90',
         '215.16.144.112',
