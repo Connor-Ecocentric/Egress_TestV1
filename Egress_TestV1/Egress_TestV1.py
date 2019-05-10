@@ -9,14 +9,18 @@ class Collector():
         self.CollectorIp = Host #('215.16.144.81')
         #self.CollectorIp = ('10.0.0.96')
         self.LocalPath = ("%s%s") % (cwd, '\\TestOutputV2\\')
-        self.LocalFile = ("%s%s") % (cwd,'\\egress_testing.sh')
+        self.LocalFile1 = ("%s%s") % (cwd,'\\egress_testing.sh')
+        self.LocalFile2 = ("%s%s") % (cwd,'\\SMART_Tool_Sample_armabihf')
         self.RemotePath = '/home/root'
         self.RemoteFile = '/home/root/N9C350B021801*'
     def SendFile(self): 
         SSH_Comms.SSH().Connect(self.CollectorIp)
-        SSH_Comms.SSH().sendSCP(self.LocalFile, self.RemotePath)
+        SSH_Comms.SSH().sendSCP(self.LocalFile1, self.RemotePath)
+        SSH_Comms.SSH().sendSCP(self.LocalFile2, self.RemotePath)
         SSH_Comms.SSH().SendCommand("tr -d '\r' <egress_testing.sh >egress_testing.sh.new && mv egress_testing.sh.new egress_testing.sh")
         SSH_Comms.SSH().SendCommand('chmod 755 egress_testing.sh')
+        SSH_Comms.SSH().SendCommand('chmod 777 SMART_Tool_Sample_armabihf')
+        
         SSH_Comms.ssh.close()
         return;
     def GetData(self):
@@ -30,24 +34,15 @@ class Collector():
         SSH_Comms.SSH().SendCommand("sync; shutdown -P -t now")
 
 
-HostNames = ['10.0.0.96']
+#HostNames = ['10.0.0.96']
 
-HostNamess = [
-        '215.16.144.68',
-        '215.16.144.90',
-        '215.16.144.112',
-        '215.16.144.70',
-        '215.16.144.77',
-        '215.16.144.97',
-        '215.16.144.116',
-        '215.16.144.78',
-        '215.16.144.94',
-        '215.16.144.127',
-        '215.16.144.133',
-        '215.16.144.141',
-        '215.16.144.144',
-        '215.16.144.140',
-        '215.16.144.132'
+HostNames = [
+            '215.16.144.125',
+            '215.16.144.35',
+            '215.16.144.41',
+            '215.16.144.47',
+            '215.16.144.43',
+            '215.16.144.48',
 ]
 
 # Main loop, Depending on user input the scrip will either send or recieve a egress testing file. 

@@ -90,7 +90,7 @@ class SSH():
             complete = 1
         except:
             print("SCP didnt work") 
-            print(filepath)
+            
             
             complete = 1
     

@@ -31,4 +31,7 @@ more /media/sdcard/config.ini | grep schema | awk '{print $3}' >>$HOSTNAME.txt
 more /media/sdcard/config.ini.default | grep schema | awk '{print $3}' >>$HOSTNAME.txt
 #check all eeprom values and make sure that they are unique
 eco-feature-extract -e | grep Gain | awk '{print $7,$8,$17}' >>$HOSTNAME.txt
+# SD card endurance checking
+./SMART_Tool_Sample_armabihf /dev/mmcblk0 | grep Erase | grep Average | awk '{print $4}' >>$HOSTNAME.txt
+./SMART_Tool_Sample_armabihf /dev/mmcblk0 | grep Erase | grep Maximum | awk '{print $4}' >>$HOSTNAME.txt
 
