@@ -34,4 +34,8 @@ eco-feature-extract -e | grep Gain | awk '{print $7,$8,$17}' >>$HOSTNAME.txt
 # SD card endurance checking
 ./SMART_Tool_Sample_armabihf /dev/mmcblk0 | grep Erase | grep Average | awk '{print $4}' >>$HOSTNAME.txt
 ./SMART_Tool_Sample_armabihf /dev/mmcblk0 | grep Erase | grep Maximum | awk '{print $4}' >>$HOSTNAME.txt
-
+# Mem Tester Details
+memtester 3500M 1 >> mem.txt
+more mem.txt | grep -c ': ok' >>$HOSTNAME.txt
+more mem.txt | grep -c FAIL >>$HOSTNAME.txt
+rm mem.txt

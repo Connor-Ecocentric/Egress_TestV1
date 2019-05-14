@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>488b52b8-f265-4698-b565-06e7292193f0</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>ReadAllFiles.py</StartupFile>
+    <StartupFile>Egress_TestV1.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>

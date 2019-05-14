@@ -7,14 +7,14 @@ b302h/45826d
 a2f9e59b4f58f751f3dc2f6b376430e2762a46b4
 a2f9e59b4f58f751f3dc2f6b376430e2762a46b4
 ext4 12.2G 1%
-241.872V, 1.415V, 1.181V
-19.26
-71.63
+241.333V, 1.381V, 1.157V
+19.45
+72.51
 Running Test WIFI            [31m✘ FAIL  [95m WIFI            testIdWiFi     [0m
 Running Test CT Detection    [31m✘ FAIL  [95m CT Detection    testIdCtDetection[0m
-53400
-Quality=65/70
-level=-45
+53800
+Quality=64/70
+level=-46
 numen/collector/config/v1.0.6
 port: 01 0001044039
 port: 02 0001044883
@@ -28,5 +28,7 @@ port: 09 0001042565
 port: 10 0001061812
 port: 11 0001059251
 port: 12 0001060544
-775
-794
+808
+825
+7
+0

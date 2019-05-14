@@ -75,7 +75,7 @@ class EgressTesting():
             Results.at[5, self.Header]=True
         else:
             Results.at[5, self.Header]=False           
-    def testSDCard(self):
+    def testSDType(self):
         # raw input for this varible should look like 'ext4 12.2G 1%' the below seperates into testble chunks
         Type = self.df.iat[8,0].split()[0]
         PartSize = self.df.iat[8,0].split()[1]
@@ -127,9 +127,31 @@ class EgressTesting():
             Results.at[14, self.Header]=True
         else:
             Results.at[14, self.Header]=False
+    def testSDHealth(self):
+        AveCycle = self.df.iat[30,0]
+        MaxCycle = self.df.iat[31,0]
+        #Test case 15
+        if int(AveCycle) < 3500:
+            Results.at[15, self.Header]=True
+        else:
+            Results.at[15, self.Header]=False
+        #Test case 16
+        if int(MaxCycle) < 3500:
+            Results.at[16, self.Header]=True
+        else:
+            Results.at[16, self.Header]=False 
+    def testMem(self):
+        FailedResults = self.df.iat[33,0]
+        #Test case 17
+        if int(FailedResults) < 1:
+            Results.at[17, self.Header]=True
+        else:
+            Results.at[17, self.Header]=False
+
            
 #!!!!!!!!!!!!!!  ***Main()***  !!!!!!!!!!!!!!
-EgressResults = pd.DataFrame()           
+EgressResults = pd.DataFrame()    
+RawInput = pd.DataFrame()  
 path = ('C:\\Users\\conno\\Source\\Repos\\Connor-Ecocentric\\Egress_TestV1\\Egress_TestV1\\TestOutputV2\\')          
 for file in os.listdir(path):
     filename = os.path.join(path, file)
@@ -141,13 +163,18 @@ for file in os.listdir(path):
             EgressTesting().testSerial()
             EgressTesting().testPartitions()
             EgressTesting().testEcoVersion()
-            EgressTesting().testSDCard()
+            EgressTesting().testSDType()
 #           EgressTesting().testVoltageCal()
             EgressTesting().testRWSpeed()
             EgressTesting().testTemp()
             EgressTesting().testWifi()
+            EgressTesting().testSDHealth()
+            EgressTesting().testMem()
+    RawInput = pd.concat([RawInput, df], axis = 1, sort = False)
     EgressResults = pd.concat([EgressResults, Results], axis = 1, sort= False)
+    with pd.ExcelWriter('C:\\Users\\conno\\Desktop\\Output.xlsx') as writer:
+        EgressResults.to_excel(writer, sheet_name= 'Results', header = True)
+        RawInput.to_excel(writer, sheet_name= 'Inputs', header = True)
     print(EgressResults)
-
 
 
