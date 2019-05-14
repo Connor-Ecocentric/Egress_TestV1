@@ -1,0 +1,34 @@
+N9C350B021801084
+N9C350B021801084
+N9C350B021801084
+N9C350B021801084
+b311h/45841d
+b302h/45826d
+a2f9e59b4f58f751f3dc2f6b376430e2762a46b4
+a2f9e59b4f58f751f3dc2f6b376430e2762a46b4
+ext4 12.2G 11%
+243.290V, 244.016V, 243.984V
+19.42
+72.82
+Running Test WIFI            [31m✘ FAIL  [95m WIFI            testIdWiFi     [0m
+Running Test CT Detection    [31m✘ FAIL  [95m CT Detection    testIdCtDetection[0m
+54600
+Quality=66/70
+level=-44
+numen/collector/config/v1.0.6
+port: 01 0001043852
+port: 02 0001043906
+port: 03 0001044235
+port: 04 0001044247
+port: 05 0001044142
+port: 06 0001043712
+port: 07 0001043981
+port: 08 0001043825
+port: 09 0001043321
+port: 10 0001060984
+port: 11 0001058212
+port: 12 0001057860
+112
+127
+7
+0

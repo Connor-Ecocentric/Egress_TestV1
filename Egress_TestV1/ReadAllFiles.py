@@ -108,6 +108,7 @@ class EgressTesting():
         else:
             Results.at[10, self.Header]=False
         #Test case 12
+
         if float(EEMCSpeed) > 62:
             Results.at[11, self.Header]=True
         else:
@@ -172,7 +173,7 @@ for file in os.listdir(path):
             EgressTesting().testMem()
     RawInput = pd.concat([RawInput, df], axis = 1, sort = False)
     EgressResults = pd.concat([EgressResults, Results], axis = 1, sort= False)
-    with pd.ExcelWriter('C:\\Users\\conno\\Desktop\\Output.xlsx') as writer:
+    with pd.ExcelWriter('C:\\Users\\conno\\Desktop\\Output.xlsx', engine='xlsxwriter') as writer:
         EgressResults.to_excel(writer, sheet_name= 'Results', header = True)
         RawInput.to_excel(writer, sheet_name= 'Inputs', header = True)
     print(EgressResults)
