@@ -1,4 +1,4 @@
-
+# coding: utf-8
 import unittest
 import logging
 import sys
@@ -28,6 +28,10 @@ class SerialNumTest(unittest.TestCase):
     Host  = os.system('more /etc/hostname')
     def testConfigini(self):
         self.assertEqual(os.system("more /media/sdcard/config.ini | grep client_id | awk '{print $3}'"),self.Host)
+    def testConfigbak(self):
+        self.assertEqual(os.system("more /home/root/config.bak | grep client_id | awk '{print $3}'"),self.Host)
+    def testEprom(self):
+        self.assertEqual(os.system("eco-feature-extract -e | grep Serial | awk '{print $4}'"),self.Host)
 
     #def testConfigbak(self):
 
